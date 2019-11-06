@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+{% load pwa %}
+{% load leaflet_tags %}
+<head>
+<meta charset="UTF-8">
+<title>Index</title>
+{% progressive_web_app_meta %}
+{% leaflet_js %}
+{% leaflet_css %}
+<script src="https://unpkg.com/pouchdb@^5.2.0/dist/pouchdb.js"></script>
+<style>
+#gis{
+width:80%;
+height:700px;
+}
+</style>
+<script type="text/javascript" src="../address/templates/js/dist/leaflet.ajax.js"></script>
+</head>
+<body>
+<h1>Leaflet</h1>
+
+
+<script type="text/javascript">
+function our_layers(map,options)
+{
+var datasets=new L.GeoJSON.AJAX("{% url 'data1' %}",{
+});
+datasets.addTo(map);
+}
+</script>
+{% leaflet_map 'gis' callback="window.our_layers" %}
+</body>
+</html>
